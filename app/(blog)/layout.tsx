@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto px-4 md:px-0">
           <Navbar />
           {children}
           <Toaster />

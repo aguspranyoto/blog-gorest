@@ -16,7 +16,7 @@ const DetailPost = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div>
-      <div className="flex flex-col space-y-6 px-4 py-6 md:px-6 lg:py-8 md:py-8">
+      <div className="flex flex-col space-y-6 pt-0 py-6">
         <Link
           className="inline-flex items-center space-x-2 text-sm text-gray-500 hover:text-gray-900"
           href="/"

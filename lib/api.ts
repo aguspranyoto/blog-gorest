@@ -1,4 +1,4 @@
-import { CommentType, Post, PostType } from "@/types";
+import { CommentType, PostType } from "@/types";
 import axios from "axios";
 
 export const getPosts = async () => {
@@ -19,19 +19,6 @@ export const getSinglePost = async (id: number) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching post:", error);
-    throw error;
-  }
-};
-
-export const postPost = async (data: Post) => {
-  try {
-    const response = await axios.post(
-      "https://gorest.co.in/public/v2/posts",
-      data
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error posting todo:", error);
     throw error;
   }
 };

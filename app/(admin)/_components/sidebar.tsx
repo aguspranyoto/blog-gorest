@@ -5,7 +5,7 @@ import { Home, ListChecks, ShoppingBag, Users } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const SidebarAdmin = () => {
+const Sidebar = () => {
   const { isOpen, toggleSidebar } = useSidebarStore();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const SidebarAdmin = () => {
         <ul className="space-y-2 font-medium">
           <li onClick={toggleSidebar}>
             <Link
-              href="/student"
+              href="/users"
               className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group"
             >
               <Users />
@@ -49,4 +49,4 @@ const SidebarAdmin = () => {
   );
 };
 
-export default SidebarAdmin;
+export default Sidebar;

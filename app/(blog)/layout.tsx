@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
-import Navbar from "@/components/navbar";
-import SidebarBlog from "@/components/sidebarBlog";
+
+import TanstackProvider from "@/providers/TanstackProvider";
+import { Toaster } from "@/components/ui/toaster";
+import Navbar from "./_components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <SidebarBlog />
-        {children}
+        <div className="max-w-5xl mx-auto">
+          <Navbar />
+          {children}
+          <Toaster />
+        </div>
       </body>
     </html>
   );

@@ -1,14 +1,12 @@
 "use client";
 
 import { useSidebarStore } from "@/lib/store";
-import { CircleUserRound, Menu, PawPrint } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
-import { Button, buttonVariants } from "./ui/button";
 
 const Navbar = () => {
   const { toggleSidebar } = useSidebarStore();
-  const auth = false;
+
   return (
     <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 ">
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -27,7 +25,7 @@ const Navbar = () => {
             </button>
             <Link href="/" className="flex ms-2 md:me-24 items-center gap-2">
               <span className="self-center text-md  sm:text-md whitespace-nowrap ">
-                Blog GoRest
+                Blog GoRest - Admin Page
               </span>
             </Link>
           </div>

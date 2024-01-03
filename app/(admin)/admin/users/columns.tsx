@@ -16,18 +16,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/use-toast";
+import { deletePost, deleteUser } from "@/lib/api";
+import { UserType } from "@/types";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Student = {
-  id: number;
-  name: string;
-  nim: number;
-  email: string;
-  age: number;
-};
 
-export const columns: ColumnDef<Student>[] = [
+export const columns: ColumnDef<UserType>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -61,14 +56,14 @@ export const columns: ColumnDef<Student>[] = [
     cell: ({ row }) => {
       const queryClient = useQueryClient();
       const router = useRouter();
-      const student = row.original;
+      const user = row.original;
       const handleDelete = async (id: number) => {
-        deletePost(id);
+        mutateDelete(id);
       };
 
-      const { mutate: deletePost } = useMutation({
+      const { mutate: mutateDelete } = useMutation({
         mutationFn: (id: number) => {
-          return axios.delete(`/api/student/delete/${id}`);
+          return deleteUser(id);
         },
         onError: (error) => {
           console.log("error", error);
@@ -77,7 +72,7 @@ export const columns: ColumnDef<Student>[] = [
           router.refresh();
           toast({
             title: "Success",
-            description: "Student deleted successfully",
+            description: "User deleted successfully",
           });
         },
       });
@@ -92,24 +87,22 @@ export const columns: ColumnDef<Student>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(student.id.toString())
-              }
+              onClick={() => navigator.clipboard.writeText(user.id.toString())}
             >
               Copy ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => router.push(`/student/${student.id}`)}
+              onClick={() => router.push(`/admin/users/${user.id}`)}
             >
-              Student detail
+              User detail
             </DropdownMenuItem>
             <DropdownMenuItem
-              onClick={() => router.push(`/student/edit/${student.id}`)}
+              onClick={() => router.push(`/admin/users/edit/${user.id}`)}
             >
               Edit
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleDelete(student.id)}>
+            <DropdownMenuItem onClick={() => handleDelete(user.id)}>
               Delete
             </DropdownMenuItem>
           </DropdownMenuContent>

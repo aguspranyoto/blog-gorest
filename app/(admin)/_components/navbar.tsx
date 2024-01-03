@@ -1,11 +1,11 @@
 "use client";
 
-import { useSidebarStore } from "@/lib/store";
+import { useMenuStore } from "@/lib/store";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 
 const Navbar = () => {
-  const { toggleSidebar } = useSidebarStore();
+  const { toggleMenu } = useMenuStore();
 
   return (
     <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 ">
@@ -13,10 +13,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start rtl:justify-end">
             <button
-              data-drawer-target="logo-sidebar"
-              data-drawer-toggle="logo-sidebar"
-              aria-controls="logo-sidebar"
-              onClick={toggleSidebar}
+              onClick={toggleMenu}
               type="button"
               className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
             >

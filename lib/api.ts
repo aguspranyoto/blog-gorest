@@ -1,6 +1,16 @@
 import { CommentType, PostType } from "@/types";
 import axios from "axios";
 
+export const getUsers = async () => {
+  try {
+    const response = await axios.get("https://gorest.co.in/public/v2/users");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    throw error;
+  }
+};
+
 export const getPosts = async () => {
   try {
     const response = await axios.get("https://gorest.co.in/public/v2/posts");
@@ -43,7 +53,7 @@ export const getComment = async (id: number) => {
     );
     return data;
   } catch (error) {
-    console.error("Error fetching post:", error);
+    console.error("Error fetching comment:", error);
     throw error;
   }
 };

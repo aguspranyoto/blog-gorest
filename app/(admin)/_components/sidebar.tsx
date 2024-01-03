@@ -1,19 +1,19 @@
 "use client";
 
-import { useSidebarStore } from "@/lib/store";
+import { useMenuStore } from "@/lib/store";
 import { Home, ListChecks, ShoppingBag, Users } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Sidebar = () => {
-  const { isOpen, toggleSidebar } = useSidebarStore();
+  const { isOpen, toggleMenu } = useMenuStore();
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       const sidebar = document.getElementById("sidebar");
 
       if (sidebar && !sidebar.contains(event.target as Node) && isOpen) {
-        toggleSidebar(); // Close the sidebar if it's open
+        toggleMenu(); // Close the sidebar if it's open
       }
     };
 
@@ -22,7 +22,7 @@ const Sidebar = () => {
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
-  }, [isOpen, toggleSidebar]);
+  }, [isOpen, toggleMenu]);
 
   return (
     <aside
@@ -34,7 +34,7 @@ const Sidebar = () => {
     >
       <div className="h-full px-3 pb-4 overflow-y-auto bg-white ">
         <ul className="space-y-2 font-medium">
-          <li onClick={toggleSidebar}>
+          <li onClick={toggleMenu}>
             <Link
               href="/users"
               className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group"

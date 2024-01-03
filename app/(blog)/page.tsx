@@ -7,6 +7,7 @@ export default async function Home() {
 
   return (
     <div>
+      <h1 className="text-xl font-semibold text-center mb-8 ">Articles</h1>
       {posts.map((post: PostType) => (
         <Post key={post.id} post={post} />
       ))}

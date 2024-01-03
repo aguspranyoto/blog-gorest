@@ -1,13 +1,16 @@
 "use client";
 
-import { useSidebarStore } from "@/lib/store";
+import { useMenuStore } from "@/lib/store";
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const { isOpen, toggleSidebar } = useSidebarStore();
+  const pathname = usePathname();
+
+  const { isOpen, toggleMenu } = useMenuStore();
   return (
-    <nav className="bg-white border-gray-200 mb-8">
+    <nav className="bg-white mb-8 border-b-2 border-gray-300">
       <div className="flex flex-wrap items-center justify-between mx-auto py-4">
         <Link href="/" className="flex items-center space-x-3">
           <span className="self-center text-xl font-semibold whitespace-nowrap ">
@@ -15,11 +18,10 @@ const Navbar = () => {
           </span>
         </Link>
         <button
-          onClick={toggleSidebar}
+          onClick={toggleMenu}
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-600 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
         >
-          <span className="sr-only">Open main menu</span>
           <Menu />
         </button>
         <div className={`${isOpen ? "" : "hidden"} w-full md:block md:w-auto`}>
@@ -27,7 +29,12 @@ const Navbar = () => {
             <li>
               <Link
                 href="/"
-                className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0"
+                onClick={toggleMenu}
+                className={`${
+                  pathname == "/"
+                    ? "text-white bg-amber-500 md:text-amber-500"
+                    : ""
+                } block text-gray-900  py-2 px-3 rounded md:bg-transparent md:p-0`}
               >
                 Home
               </Link>
@@ -35,7 +42,12 @@ const Navbar = () => {
             <li>
               <Link
                 href="/about"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                onClick={toggleMenu}
+                className={`${
+                  pathname == "/about"
+                    ? "text-white bg-amber-500 md:text-amber-500"
+                    : ""
+                } block text-gray-900  py-2 px-3 rounded md:bg-transparent md:p-0`}
               >
                 About
               </Link>
@@ -43,7 +55,12 @@ const Navbar = () => {
             <li>
               <Link
                 href="/contact"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                onClick={toggleMenu}
+                className={`${
+                  pathname == "/contact"
+                    ? "text-white bg-amber-500 md:text-amber-500"
+                    : ""
+                } block text-gray-900  py-2 px-3 rounded md:bg-transparent md:p-0`}
               >
                 Contact
               </Link>

@@ -25,7 +25,7 @@ export default function RootLayout({
         <Navbar />
         <Sidebar />
         <div className="p-4 sm:ml-64">
-          <div className="p-4 shadow-xl border border-gray-200  mt-14">
+          <div className="mt-14 p-6 shadow-md">
             <TanstackProvider>{children}</TanstackProvider>
             <Toaster />
           </div>

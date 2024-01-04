@@ -16,6 +16,24 @@ export const getUsers: () => Promise<UserType[]> = async () => {
   }
 };
 
+export const getSingleUser: (id: number) => Promise<UserType> = async (id) => {
+  try {
+    const response = await axios.get(
+      `https://gorest.co.in/public/v2/users/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_GOREST_TOKEN}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching post:", error);
+    throw error;
+  }
+};
+
 export const getPosts: () => Promise<PostType[]> = async () => {
   try {
     const response = await axios.get("https://gorest.co.in/public/v2/posts", {
@@ -122,6 +140,28 @@ export const createUser: (data: FormUserType) => Promise<FormUserType> = async (
     return response.data;
   } catch (error) {
     console.error("Error creating user:", error);
+    throw error;
+  }
+};
+
+export const editUser: (
+  data: FormUserType,
+  id: number
+) => Promise<FormUserType> = async (data, id) => {
+  try {
+    const response = await axios.put(
+      `https://gorest.co.in/public/v2/users/${id}`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_GOREST_TOKEN}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error editing user:", error);
     throw error;
   }
 };

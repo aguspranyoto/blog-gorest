@@ -11,11 +11,12 @@ import { FormUserType } from "@/types";
 
 import { toast } from "@/components/ui/use-toast";
 import { createUser } from "@/lib/api";
+import BackButton from "@/components/BackButton";
 
 const CreatePage = () => {
   const router = useRouter();
 
-  const handleCreatePost: SubmitHandler<FormUserType> = (data) => {
+  const handleCreateUser: SubmitHandler<FormUserType> = (data) => {
     mutation.mutate(data);
   };
 
@@ -38,11 +39,9 @@ const CreatePage = () => {
 
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold">Create new user</h2>
-        <Link href="/admin/users" className={buttonVariants()}>
-          Back to user table
-        </Link>
+        <BackButton url="/admin/users" text="Back to all users" />
       </div>
       <FormUser
         initialValues={{
@@ -51,7 +50,7 @@ const CreatePage = () => {
           gender: "",
           status: "",
         }}
-        submit={handleCreatePost}
+        submit={handleCreateUser}
         isLoading={mutation.isPending}
         isEditing={false}
       />

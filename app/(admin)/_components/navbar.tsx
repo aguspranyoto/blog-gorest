@@ -1,11 +1,10 @@
 "use client";
 
 import { useMenuStore } from "@/lib/store";
-import { Menu } from "lucide-react";
-import Link from "next/link";
+import { Menu, Webhook, X } from "lucide-react";
 
 const Navbar = () => {
-  const { toggleMenu } = useMenuStore();
+  const { toggleMenu, isOpen } = useMenuStore();
 
   return (
     <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 ">
@@ -18,13 +17,14 @@ const Navbar = () => {
               className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
             >
               <span className="sr-only">Open sidebar</span>
-              <Menu />
+              {!isOpen ? <Menu /> : <X />}
             </button>
-            <Link href="/" className="flex ms-2 md:me-24 items-center gap-2">
+            <div className="flex ms-2 md:me-24 items-center gap-2">
+              <Webhook />
               <span className="self-center text-md  sm:text-md whitespace-nowrap ">
                 Blog GoRest - Admin Page
               </span>
-            </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -1,19 +1,23 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { buttonVariants } from "./ui/button";
+import { ArrowLeftIcon } from "lucide-react";
+import Link from "next/link";
+import { FC } from "react";
 
-const BackButton = () => {
-  const router = useRouter();
+interface BackButtonProps {
+  url: string;
+  text: string;
+}
 
-  const handleBackClick = () => {
-    router.back();
-  };
-
+const BackButton: FC<BackButtonProps> = ({ url, text }) => {
   return (
-    <button className={buttonVariants()} onClick={handleBackClick}>
-      Go Back
-    </button>
+    <Link
+      className="inline-flex items-center space-x-2 text-sm text-gray-500 hover:text-gray-900 mb-6"
+      href={url}
+    >
+      <ArrowLeftIcon className="h-4 w-4" />
+      <span>{text}</span>
+    </Link>
   );
 };
 

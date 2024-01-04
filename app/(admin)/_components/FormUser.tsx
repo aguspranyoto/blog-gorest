@@ -23,7 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FormUserType } from "@/types";
+import { FormUserType, UserType } from "@/types";
 import { FC } from "react";
 
 const FormSchema = z.object({
@@ -61,6 +61,14 @@ const FormUser: FC<FormUserProps> = ({
     resolver: zodResolver(FormSchema),
     defaultValues: initialValues,
   });
+
+  console.log(isLoading);
+  console.log(initialValues);
+
+  if (isLoading) {
+    return <div>loading ..</div>;
+  }
+
   return (
     <div className="flex flex-col items-center py-6">
       <Form {...form}>
@@ -142,7 +150,11 @@ const FormUser: FC<FormUserProps> = ({
             />
           </div>
           <Button type="submit" className="mt-6">
-            {isLoading ? "Please wait..." : isEditing ? "Update" : "Create"}
+            {isLoading
+              ? "Please wait..."
+              : isEditing
+              ? "Update user"
+              : "Add new user"}
           </Button>
         </form>
       </Form>

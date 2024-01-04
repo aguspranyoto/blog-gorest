@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="max-w-5xl mx-auto px-4 md:px-0">
           <Navbar />
-          {children}
+          <div className="min-h-[calc(100vh-64px)]">{children}</div>
           <Footer isAdmin={false} />
         </div>
       </body>

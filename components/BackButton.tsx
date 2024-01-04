@@ -12,7 +12,7 @@ interface BackButtonProps {
 const BackButton: FC<BackButtonProps> = ({ url, text }) => {
   return (
     <Link
-      className="inline-flex items-center space-x-2 text-sm text-gray-500 hover:text-gray-900 mb-6"
+      className="flex items-center space-x-2 text-sm text-gray-500 hover:text-gray-900 hover:underline"
       href={url}
     >
       <ArrowLeftIcon className="h-4 w-4" />

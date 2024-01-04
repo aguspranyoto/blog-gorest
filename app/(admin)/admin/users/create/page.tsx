@@ -1,8 +1,7 @@
 "use client";
 
 import FormUser from "@/app/(admin)/_components/FormUser";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
+
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import React from "react";
@@ -41,7 +40,9 @@ const CreatePage = () => {
     <div>
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold">Create new user</h2>
-        <BackButton url="/admin/users" text="Back to all users" />
+        <div className="">
+          <BackButton url="/admin/users" text="Back to all users" />
+        </div>
       </div>
       <FormUser
         initialValues={{

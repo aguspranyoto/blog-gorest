@@ -40,7 +40,7 @@ const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
           <div>
             <h3 className="text-lg font-semibold mb-2">Contact Info</h3>
             <p className="text-sm">
-              Jalan asrama haji, Jakarta Timur
+              Jl asrama haji, Jakarta Timur
               <br />
               Phone: (021) 111-222-3333
               <br />
@@ -49,8 +49,12 @@ const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
           </div>
         </div>
       ) : null}
-      <div className={`${isAdmin ? `mt-0` : `mt-8`} text-center text-sm`}>
-        © Blog GoRest. All rights reserved.{" "}
+      <div
+        className={`${
+          isAdmin ? `mt-0` : `mt-8`
+        } container mx-auto md:text-center text-sm`}
+      >
+        <p className="mb-2">© Blog GoRest. All rights reserved.</p>
         <a
           className="underline"
           href="https://github.com/aguspranyoto/blog-gorest"

@@ -27,20 +27,23 @@ import { FormUserType, UserType } from "@/types";
 import { FC } from "react";
 
 const FormSchema = z.object({
-  name: z.string().min(1, {
-    message: "name is required",
-  }),
+  name: z
+    .string()
+    .min(1, {
+      message: "Name is required",
+    })
+    .min(3, { message: "Please enter at least 3 characters." }),
   email: z
     .string()
     .min(1, {
-      message: "email is required",
+      message: "Email is required",
     })
     .email(),
   gender: z.string().min(1, {
-    message: "gender is required",
+    message: "Gender is required",
   }),
   status: z.string().min(1, {
-    message: "status is required",
+    message: "Status is required",
   }),
 });
 
@@ -61,9 +64,6 @@ const FormUser: FC<FormUserProps> = ({
     resolver: zodResolver(FormSchema),
     defaultValues: initialValues,
   });
-
-  console.log(isLoading);
-  console.log(initialValues);
 
   if (isLoading) {
     return <div>loading ..</div>;

@@ -12,7 +12,7 @@ import Link from "next/link";
 interface RecentType {
   recent: PostType;
 }
-const Recent = async ({ recent }: RecentType) => {
+const Recent = ({ recent }: RecentType) => {
   return (
     <Card>
       <CardHeader>

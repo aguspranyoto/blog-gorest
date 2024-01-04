@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         <Sidebar />
-        <div className="p-4 sm:ml-64 min-h-[calc(100vh-54px)]">
+        <div className="p-4 sm:ml-64 min-h-[calc(100vh-64px)]">
           <div className="mt-14 p-6 shadow-md">
             <TanstackProvider>{children}</TanstackProvider>
             <Toaster />

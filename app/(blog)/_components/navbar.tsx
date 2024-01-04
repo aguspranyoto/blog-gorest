@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const { isOpen, toggleMenu } = useMenuStore();
   return (
-    <nav className="bg-white mb-8 border-b-2 border-gray-300">
+    <nav className="bg-white mb-8 border-b border-gray-300">
       <div className="flex flex-wrap items-center justify-between mx-auto py-4">
         <Link href="/" className="flex items-center space-x-3">
           <Webhook />
@@ -37,7 +37,7 @@ const Navbar = () => {
                     : ""
                 } block text-gray-500 md:hover:text-gray-900  py-2 px-3 rounded md:bg-transparent md:p-0`}
               >
-                Home
+                Blog
               </Link>
             </li>
             <li>

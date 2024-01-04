@@ -19,6 +19,63 @@ import { toast } from "@/components/ui/use-toast";
 import { deleteUser } from "@/lib/api";
 import { UserType } from "@/types";
 
+const CellComponent = ({ row }: { row: any }) => {
+  const router = useRouter();
+  const user = row.original;
+  const handleDelete = async (id: number) => {
+    mutateDelete(id);
+  };
+
+  const { mutate: mutateDelete } = useMutation({
+    mutationFn: (id: number) => {
+      return deleteUser(id);
+    },
+    onError: (error) => {
+      console.log("error", error);
+    },
+    onSuccess: () => {
+      router.refresh();
+      toast({
+        title: "Success",
+        description: "User deleted successfully",
+      });
+    },
+  });
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 p-0">
+          <span className="sr-only">Open menu</span>
+          <MoreHorizontal className="h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <DropdownMenuItem
+          onClick={() => navigator.clipboard.writeText(user.id.toString())}
+        >
+          Copy ID
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          onClick={() => router.push(`/admin/users/${user.id}`)}
+        >
+          User detail
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => router.push(`/admin/users/edit/${user.id}`)}
+        >
+          Edit
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleDelete(user.id)}>
+          Delete
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+};
+
 export const columns: ColumnDef<UserType>[] = [
   {
     accessorKey: "name",
@@ -50,60 +107,6 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: "actions",
     header: "Actions",
     id: "actions",
-    cell: ({ row }) => {
-      const router = useRouter();
-      const user = row.original;
-      const handleDelete = async (id: number) => {
-        mutateDelete(id);
-      };
-
-      const { mutate: mutateDelete } = useMutation({
-        mutationFn: (id: number) => {
-          return deleteUser(id);
-        },
-        onError: (error) => {
-          console.log("error", error);
-        },
-        onSuccess: () => {
-          router.refresh();
-          toast({
-            title: "Success",
-            description: "User deleted successfully",
-          });
-        },
-      });
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user.id.toString())}
-            >
-              Copy ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => router.push(`/admin/users/${user.id}`)}
-            >
-              User detail
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => router.push(`/admin/users/edit/${user.id}`)}
-            >
-              Edit
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleDelete(user.id)}>
-              Delete
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
+    cell: CellComponent,
   },
 ];

@@ -49,7 +49,7 @@ const Footer = ({ isAdmin }: { isAdmin: boolean }) => {
           </div>
         </div>
       ) : null}
-      <div className={`${isAdmin ? `mt-0` : ``} mt-8 text-center text-sm`}>
+      <div className={`${isAdmin ? `mt-0` : `mt-8`} text-center text-sm`}>
         © Blog GoRest. All rights reserved.{" "}
         <a
           className="underline"

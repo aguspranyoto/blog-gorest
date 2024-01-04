@@ -16,13 +16,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/use-toast";
-import { deletePost, deleteUser } from "@/lib/api";
+import { deleteUser } from "@/lib/api";
 import { UserType } from "@/types";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 
-export const columns: ColumnDef<UserType>[] = [
+export const Columns: ColumnDef<UserType>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {

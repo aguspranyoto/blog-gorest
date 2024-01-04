@@ -18,7 +18,7 @@ interface Props {
 
 const Post = ({ post }: Props) => {
   return (
-    <div className="mb-6">
+    <div className="mb-6" key={post.id}>
       <Link href={`/detail/${post?.id}`}>
         <Card>
           <CardHeader className="pb-3">

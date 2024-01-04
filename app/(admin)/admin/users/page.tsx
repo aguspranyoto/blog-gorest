@@ -1,9 +1,10 @@
 import React from "react";
 import { DataTable } from "./data-table";
 import { getUsers } from "@/lib/api";
-import { columns } from "./columns";
+
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import { columns } from "./columns";
 
 const UsersPage = async () => {
   const users = await getUsers();

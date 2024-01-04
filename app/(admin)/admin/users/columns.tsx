@@ -12,17 +12,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
+
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/use-toast";
 import { deleteUser } from "@/lib/api";
 import { UserType } from "@/types";
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-
-export const Columns: ColumnDef<UserType>[] = [
+export const columns: ColumnDef<UserType>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -54,7 +51,6 @@ export const Columns: ColumnDef<UserType>[] = [
     header: "Actions",
     id: "actions",
     cell: ({ row }) => {
-      const queryClient = useQueryClient();
       const router = useRouter();
       const user = row.original;
       const handleDelete = async (id: number) => {

@@ -9,7 +9,7 @@ export default async function Home() {
     <div>
       <h1 className="text-xl font-semibold text-center mb-8 ">Articles</h1>
       {posts.map((post: PostType) => (
-        <Post post={post} />
+        <Post key={post.id} post={post} />
       ))}
     </div>
   );

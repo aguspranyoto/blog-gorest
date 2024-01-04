@@ -53,7 +53,7 @@ const DetailPost = async ({ params }: { params: { id: string } }) => {
           <h2 className="text-2xl font-bold">Recent Posts</h2>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {recents.map((recent: PostType) => (
-              <Recent recent={recent} />
+              <Recent recent={recent} key={recent.id} />
             ))}
           </div>
         </section>

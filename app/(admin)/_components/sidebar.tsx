@@ -13,7 +13,7 @@ const Sidebar = () => {
       const sidebar = document.getElementById("sidebar");
 
       if (sidebar && !sidebar.contains(event.target as Node) && isOpen) {
-        toggleMenu(); // Close the sidebar if it's open
+        toggleMenu();
       }
     };
 
@@ -36,7 +36,7 @@ const Sidebar = () => {
         <ul className="space-y-2 font-medium">
           <li onClick={toggleMenu}>
             <Link
-              href="/users"
+              href="/admin/users"
               className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100  group"
             >
               <Users />

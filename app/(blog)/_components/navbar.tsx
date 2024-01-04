@@ -33,9 +33,9 @@ const Navbar = () => {
                 onClick={toggleMenu}
                 className={`${
                   pathname == "/"
-                    ? "text-white bg-amber-500 md:text-amber-500"
+                    ? "text-white bg-gray-800 md:text-gray-900"
                     : ""
-                } block text-gray-900  py-2 px-3 rounded md:bg-transparent md:p-0`}
+                } block text-gray-500 md:hover:text-gray-900  py-2 px-3 rounded md:bg-transparent md:p-0`}
               >
                 Home
               </Link>
@@ -46,9 +46,9 @@ const Navbar = () => {
                 onClick={toggleMenu}
                 className={`${
                   pathname == "/about"
-                    ? "text-white bg-amber-500 md:text-amber-500"
+                    ? "text-white bg-gray-800 md:text-gray-900"
                     : ""
-                } block text-gray-900  py-2 px-3 rounded md:bg-transparent md:p-0`}
+                } block text-gray-500 md:hover:text-gray-900  py-2 px-3 rounded md:bg-transparent md:p-0`}
               >
                 About
               </Link>
@@ -59,9 +59,9 @@ const Navbar = () => {
                 onClick={toggleMenu}
                 className={`${
                   pathname == "/contact"
-                    ? "text-white bg-amber-500 md:text-amber-500"
+                    ? "text-white bg-gray-800 md:text-gray-900"
                     : ""
-                } block text-gray-900  py-2 px-3 rounded md:bg-transparent md:p-0`}
+                } block text-gray-500 md:hover:text-gray-900  py-2 px-3 rounded md:bg-transparent md:p-0`}
               >
                 Contact
               </Link>

@@ -4,15 +4,15 @@ import React from "react";
 const AboutPage = () => {
   return (
     <div>
-      <section className="w-full max-w-4xl mx-auto">
+      <section className="">
         <h1 className="text-xl font-semibold text-center">About Page</h1>
-        <p className="mt-4 text-lg text-center text-gray-600 dark:text-gray-400">
+        <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
           Welcome to our blog! We are dedicated to sharing our knowledge and
           insights on various topics. Our goal is to provide valuable content
           that inspires and educates our readers.
         </p>
       </section>
-      <section className="w-full max-w-4xl p-4 mx-auto mt-10">
+      <section className=" mt-10">
         <h2 className="text-2xl font-bold">Meet the Author</h2>
         <div className="flex items-center mt-4">
           <Image
@@ -35,7 +35,7 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-      <section className="w-full max-w-4xl p-4 mx-auto mt-10">
+      <section className=" mt-10">
         <h2 className="text-2xl font-bold">Blog Categories</h2>
         <div className="grid grid-cols-2 gap-4 mt-4">
           <div className="p-4 bg-gray-100 rounded-lg dark:bg-gray-800">
